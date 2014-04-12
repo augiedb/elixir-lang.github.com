@@ -6,7 +6,7 @@ guide: 4
 
 # {{ page.title }}
 
-In this chapter, we will show how the `=` operator in Elixir is actually a match operator and how to use it to pattern match inside data structures. Finally, we will learn about the pin operator `^` used to access previously bound values.
+In this chapter, we will show how the `=` operator in Elixir is actually a match operator and how to use it to pattern match inside data structures. We will also learn about the pin operator `^` used to access previously bound values.
 
 ## 4.1 The match operator
 
@@ -30,14 +30,14 @@ iex> 2 = x
 
 Notice that `1 = x` is a valid expression, and it matched because both the left and right side are equal to 1. When the sides do not match, a `MatchError` is raised.
 
-Also, in Elixir parlance, we don't say a variable is assigned. We say a variable is bound or not. A variable can only be bound on the left side of `=`:
+Also, in Elixir parlance, we don't say a variable is *assigned*. We say a variable is *bound* or not. A variable can only be bound on the left side of `=`:
 
 ```iex
 iex> 1 = unknown
 ** (RuntimeError) undefined function: unknown/0
 ````
 
-Since there is no variable unknown previously defined, Elixir imagined you were trying to call a function named `unknown/0`, but there isn't such function.
+Since there is no variable `unknown` previously defined, Elixir imagines you are trying to call a function named `unknown/0`, but there is no such function.
 
 ## 4.2 Pattern matching
 
@@ -52,7 +52,7 @@ iex> b
 "world"
 ```
 
-A pattern match will error in case the sides can't match. This is, for example, the case when the tuples have different sizes:
+A pattern match will return an error if the sides can't match. This is the case, for example, when the tuples have different sizes:
 
 ```iex
 iex> {a, b, c} = {:hello, "world"}
@@ -105,7 +105,7 @@ iex> [h|t] = []
 ** (MatchError) no match of right hand side value: []
 ```
 
-The `[head | tail]` format is not only used on pattern matching but also for prepending items to a list:
+The `[head | tail]` format is not only used on pattern matching, but also for prepending items to a list:
 
 ```iex
 iex> list = [1, 2, 3]
@@ -114,7 +114,7 @@ iex> [0|list]
 [0, 1, 2, 3]
 ```
 
-Pattern matching allows developers to easily destructure data types such as tuples and lists. As we will see in following chapters, it is one of the foundations of recursion in Elixir and applies to other types as well, like maps and binaries.
+Pattern matching allows developers to easily destructure data types such as tuples and lists. As we will see in the following chapters, it is one of the foundations of recursion in Elixir. It applies to other types, as well, like maps and binaries.
 
 ## 4.3 The pin operator
 
@@ -127,7 +127,7 @@ iex> x = 2
 2
 ```
 
-The pin operator `^` can be used when there is no interest in rebinding a variable but rather in matching against its value prior to the match:
+The pin operator `^` can be used when there is no interest in rebinding a variable, but rather in matching against its value prior to the match:
 
 ```iex
 iex> x = 1
